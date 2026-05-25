@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+.env.*
+
+# Virtual environments
+.venv/
+venv/
+env/
+projectenv/
+
+# Next.js
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/node_modules/
+
+# Misc
+.DS_Store
+*.pem
+*.log

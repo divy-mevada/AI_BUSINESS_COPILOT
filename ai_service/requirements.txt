@@ -1,0 +1,38 @@
+# FastAPI
+fastapi
+uvicorn
+python-multipart
+
+# LangChain
+langchain
+langchain-core
+langchain-community
+
+# Hugging Face
+langchain-huggingface
+transformers
+huggingface-hub
+
+# Environment Variables
+python-dotenv
+
+# Data Processing
+pandas
+numpy
+
+# Machine Learning
+scikit-learn
+
+# Validation
+pydantic
+
+# HTTP Requests
+requests
+
+# CSV Handling
+tabulate
+
+chromadb
+faiss-cpu
+sentence-transformers
+textblob 
