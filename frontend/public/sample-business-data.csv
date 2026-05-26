@@ -1,0 +1,7 @@
+month,region,product_category,revenue,orders,inventory_on_hand,customer_rating
+January,South Zone,Beverages,18400,326,142,4.6
+January,West Zone,Snacks,12950,241,96,4.4
+February,South Zone,Beverages,21320,358,121,4.7
+February,North Zone,Household,11840,187,88,4.2
+March,South Zone,Beverages,24110,391,104,4.8
+March,East Zone,Personal Care,13690,214,73,4.5

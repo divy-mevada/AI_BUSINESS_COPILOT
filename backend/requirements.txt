@@ -1,0 +1,25 @@
+# Django
+django
+djangorestframework
+django-cors-headers
+
+# Authentication
+djangorestframework-simplejwt
+
+# Database
+psycopg2-binary
+
+# Environment Variables
+python-dotenv
+
+# API Requests
+requests
+
+# File Handling
+pillow
+
+# Development
+django-extensions
+
+# Optional (useful later)
+drf-yasg
