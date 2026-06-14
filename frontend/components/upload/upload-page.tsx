@@ -377,7 +377,7 @@ export function UploadPage() {
             </motion.div>
 
             {showResults ? <AnalysisResultsPreview analysis={analysis} /> : null}
-k          </section>
+          </section>
         )}
       </LandingShell>
     </div>

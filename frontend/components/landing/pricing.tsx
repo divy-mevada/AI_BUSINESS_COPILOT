@@ -52,7 +52,7 @@ export function Pricing() {
             Flexible plans that grow with your business. Start free and upgrade
             when you&apos;re ready.
           </p>
-          <LandingButton href="#connect" variant="secondary" size="sm">
+          <LandingButton href="/signup" variant="secondary" size="sm">
             Get started
           </LandingButton>
         </div>

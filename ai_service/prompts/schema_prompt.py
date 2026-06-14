@@ -1,10 +1,14 @@
 schema_prompt = """
-You are a business CSV schema analyzer.
+You are a CSV column mapper.
 
-Your task is to map uploaded CSV columns
-to the standard business schema.
+You will be given:
+1. A list of standard schema field names
+2. A list of CSV column names from an uploaded file
+3. Sample rows from the CSV
 
-Standard Schema:
+Your job is to match each standard field to the most relevant CSV column name.
+
+Standard Schema Fields:
 {schema}
 
 CSV Columns:
@@ -25,23 +29,12 @@ Important mappings examples:
 - stock -> inventory
 - inventory_count -> inventory
 
-
 Rules:
-- Return ONLY valid JSON
+- Return ONLY a valid JSON object
 - Do NOT explain anything
-- Do NOT add markdown
-- Do NOT use ```json
+- Do NOT add markdown or ```json
 - Use double quotes only
-- Keys must be standard schema fields
-- Values must be matching CSV column names
-- If no matching column exists, use null
-
-Example Output:
-
-{{
-    "product_name": "item_title",
-    "total_revenue": "sales_value",
-    "quantity_sold": "units",
-    "rating": null
-}}
+- Each key must be a standard schema field name
+- Each value must be the exact matching CSV column name as a string, or null if no match
+- Example: {{"product_id": "id", "product_name": "item_title", "price": null}}
 """

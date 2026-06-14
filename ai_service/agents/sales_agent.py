@@ -7,7 +7,7 @@ def analyze_sales(df):
     if "total_revenue" in df.columns:
 
         insights["total_revenue"] = float(
-            df["total_revenue"]
+            pd.to_numeric(df["total_revenue"], errors="coerce")
             .fillna(0)
             .sum()
         )
@@ -15,7 +15,7 @@ def analyze_sales(df):
     if "quantity_sold" in df.columns:
 
         insights["total_quantity_sold"] = int(
-            df["quantity_sold"]
+            pd.to_numeric(df["quantity_sold"], errors="coerce")
             .fillna(0)
             .sum()
         )
@@ -39,7 +39,7 @@ def analyze_sales(df):
             )
     # Average Rating
     avg_rating = (
-        df["rating"]
+        pd.to_numeric(df["rating"], errors="coerce")
         .fillna(0)
         .mean()
     )
@@ -59,6 +59,7 @@ def analyze_sales(df):
         and "return_count" in df.columns
     ):
 
+        df["return_count"] = pd.to_numeric(df["return_count"], errors="coerce").fillna(0)
         returned = (
             df.groupby("product_name")[
                 "return_count"
@@ -78,11 +79,12 @@ def analyze_sales(df):
         and "rating" in df.columns
     ):
 
+        df["rating"] = pd.to_numeric(df["rating"], errors="coerce").fillna(0)
         avg_rating = (
             df.groupby("product_name")[
                 "rating"
             ]
-            .mean() 
+            .mean()
         )
 
         if not avg_rating.empty:

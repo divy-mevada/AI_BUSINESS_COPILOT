@@ -1,0 +1,120 @@
+@import "../globals.css";
+
+@theme {
+  --color-on-surface-variant: #414846;
+  --color-secondary-container: #b4f335;
+  --color-primary-fixed: #c5eadf;
+  --color-surface-container-highest: #e1e3df;
+  --color-secondary-fixed: #b7f639;
+  --color-on-secondary-container: #4c6c00;
+  --color-on-surface: #191c1a;
+  --color-surface-dim: #d8dbd7;
+  --color-outline-variant: #c1c8c4;
+  --color-background: #f8faf6;
+  --color-tertiary: #1c2317;
+  --color-primary-fixed-dim: #aacec3;
+  --color-primary-container: #1a3c34;
+  --color-tertiary-fixed-dim: #c1c9b8;
+  --color-tertiary-container: #31382c;
+  --color-on-primary-container: #83a69c;
+  --color-surface-tint: #43655c;
+  --color-on-secondary-fixed: #131f00;
+  --color-on-secondary-fixed-variant: #354e00;
+  --color-on-error-container: #93000a;
+  --color-primary: #01261f;
+  --color-secondary: #486800;
+  --color-on-tertiary-fixed: #171e13;
+  --color-surface-container-high: #e7e9e5;
+  --color-on-tertiary-container: #99a191;
+  --color-surface-variant: #e1e3df;
+  --color-on-primary-fixed-variant: #2b4d44;
+  --color-on-background: #191c1a;
+  --color-on-error: #ffffff;
+  --color-inverse-primary: #aacec3;
+  --color-on-tertiary-fixed-variant: #41493c;
+  --color-outline: #717976;
+  --color-on-primary: #ffffff;
+  --color-tertiary-fixed: #dde5d3;
+  --color-surface-container-low: #f2f4f0;
+  --color-surface: #f8faf6;
+  --color-inverse-surface: #2e312f;
+  --color-on-secondary: #ffffff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-bright: #f8faf6;
+  --color-inverse-on-surface: #eff1ed;
+  --color-on-primary-fixed: #00201a;
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-tertiary: #ffffff;
+  --color-secondary-fixed-dim: #9cd912;
+  --color-surface-container: #eceeeb;
+
+  /* Scoped Border Radii */
+  --radius-default: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2.5rem;
+  --radius-full: 9999px;
+
+  /* Scoped Spacing Variables */
+  --spacing-container-max: 1440px;
+  --spacing-margin-tablet: 40px;
+  --spacing-unit: 8px;
+  --spacing-margin-mobile: 20px;
+  --spacing-margin-desktop: 80px;
+  --spacing-gutter: 24px;
+}
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+@utility reveal-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@utility glass-nav {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 32, 26, 0.05) !important;
+}
+
+@utility mirror-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.mirror-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 45%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.1) 55%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  transition: 0.7s;
+  pointer-events: none;
+}
+
+.mirror-shine:hover::after {
+  left: 100%;
+  top: 100%;
+}
+
+.texture-bg {
+  background-image: url("https://www.transparenttextures.com/patterns/p6.png");
+  opacity: 0.03;
+}

@@ -35,9 +35,17 @@ export function Navbar() {
           ))}
         </nav>
 
-        <LandingButton href="#connect" size="sm" className="shrink-0">
-          Get started
-        </LandingButton>
+        <div className="flex items-center gap-6 shrink-0">
+          <Link
+            href="/login"
+            className="text-sm font-medium text-[var(--landing-text)] transition-colors hover:text-[var(--landing-olive)]"
+          >
+            Sign in
+          </Link>
+          <LandingButton href="/signup" size="sm">
+            Get started
+          </LandingButton>
+        </div>
       </LandingShell>
     </header>
   );

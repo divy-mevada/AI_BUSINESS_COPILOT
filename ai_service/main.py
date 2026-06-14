@@ -32,10 +32,6 @@ async def upload_csv(file: UploadFile = File(...)):
     sales_insights = analyze_sales(
     standardized_df
     )
-    
-    sales_insights = analyze_sales(
-    standardized_df
-    )
 
     customer_insights = analyze_customers(
         standardized_df

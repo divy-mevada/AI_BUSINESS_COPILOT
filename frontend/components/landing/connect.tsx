@@ -12,7 +12,7 @@ export function Connect() {
           Ready to transform how you run your business? Join thousands of teams
           already growing with AI Business Copilot.
         </p>
-        <LandingButton href="#" size="lg" className="mt-2 min-w-[200px]">
+        <LandingButton href="/signup" size="lg" className="mt-2 min-w-[200px]">
           Join us
         </LandingButton>
       </LandingShell>
