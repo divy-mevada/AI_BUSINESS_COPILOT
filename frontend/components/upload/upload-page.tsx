@@ -39,6 +39,25 @@ type AnalysisResult = {
     top_negative_keywords?: string[];
   };
   recommendations: string;
+  customer_segmentation?: {
+    [key: string]: {
+      name: string;
+      size: number;
+      avg_spent: number;
+      avg_freq: number;
+      avg_rating: number;
+    };
+  };
+  sales_forecast?: {
+    trend?: string;
+    daily_growth_rate?: number;
+    historical_dates?: string[];
+    historical_values?: number[];
+    forecast_dates?: string[];
+    forecast_values?: number[];
+    error?: string;
+  };
+  marketing_strategy?: string;
 };
 
 export function UploadPage() {

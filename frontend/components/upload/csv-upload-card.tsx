@@ -113,7 +113,7 @@ export function CsvUploadCard({
         {isUploading || (selectedFile && uploadProgress > 0) ? (
           <div className="w-full max-w-md mx-auto mb-6">
             <div className="flex justify-between items-end mb-2">
-              <span className="text-xs font-semibold text-primary uppercase">{selectedFile.name}</span>
+              <span className="text-xs font-semibold text-primary uppercase">{selectedFile?.name}</span>
               <span className="text-xs font-semibold text-primary">{uploadProgress}%</span>
             </div>
             <div className="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
