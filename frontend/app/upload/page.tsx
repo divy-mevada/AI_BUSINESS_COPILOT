@@ -1,5 +1,6 @@
-import { UploadPage } from "@/components/upload/upload-page";
+import { DashboardPage } from "@/components/upload/dashboard-page";
 
 export default function Page() {
-  return <UploadPage />;
+  return <DashboardPage />;
 }
+

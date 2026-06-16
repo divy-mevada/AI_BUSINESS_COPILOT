@@ -122,3 +122,37 @@
   background-image: url("https://www.transparenttextures.com/patterns/p6.png");
   opacity: 0.03;
 }
+
+/* Premium Dashboard Styles from HTML */
+.premium-card {
+  background: #ffffff;
+  border: 1px solid var(--color-outline-variant);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.premium-card:hover {
+  border-color: var(--color-outline);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+}
+
+.accent-glow {
+  box-shadow: 0 0 20px 0 rgba(183, 246, 57, 0.2);
+}
+
+.stagger-in {
+  animation: slideUpFade 0.6s ease forwards;
+  opacity: 0;
+}
+
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+}
+
+

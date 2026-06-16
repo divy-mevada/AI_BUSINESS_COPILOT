@@ -22,6 +22,7 @@ import {
   Tooltip,
   Legend
 } from "recharts";
+import ReactMarkdown from "react-markdown";
 
 type AnalysisResult = {
   sales_insights: {
@@ -355,9 +356,9 @@ export function AnalysisResultsPreview({ analysis }: { analysis: AnalysisResult 
             <div className="mt-5 space-y-4">
               {analysis ? (
                 <div className="rounded-2xl border border-outline-variant bg-surface p-4 max-h-56 overflow-y-auto">
-                  <pre className="whitespace-pre-wrap text-sm leading-6 text-on-surface-variant font-body">
-                    {analysis.recommendations}
-                  </pre>
+                  <div className="whitespace-pre-wrap text-sm leading-6 text-on-surface-variant font-body prose prose-sm max-w-none prose-p:leading-relaxed prose-pre:p-0">
+                    <ReactMarkdown>{analysis.recommendations}</ReactMarkdown>
+                  </div>
                 </div>
               ) : (
                 mockRecommendations.map((item) => (
@@ -468,9 +469,9 @@ export function AnalysisResultsPreview({ analysis }: { analysis: AnalysisResult 
               AI Growth & Marketing Strategy (CMO Insights)
             </h3>
           </div>
-          <div className="prose prose-sm max-w-none text-on-surface-variant">
+          <div className="prose prose-sm max-w-none text-on-surface-variant prose-p:leading-relaxed prose-headings:text-primary prose-strong:text-primary">
             <div className="whitespace-pre-wrap text-sm leading-7 text-on-surface-variant font-body">
-              {analysis.marketing_strategy}
+              <ReactMarkdown>{analysis.marketing_strategy}</ReactMarkdown>
             </div>
           </div>
         </motion.div>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lumina AI | Premium SaaS Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #f8faf6;
+            color: #191c1a;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .premium-card {
+            background: #ffffff;
+            border: 1px solid #c1c8c4;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .premium-card:hover {
+            border-color: #717976;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+        }
+
+        .accent-glow {
+            box-shadow: 0 0 20px 0 rgba(183, 246, 57, 0.2);
+        }
+
+        .stagger-in {
+            animation: slideUpFade 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f8faf6; }
+        ::-webkit-scrollbar-thumb { background: #c1c8c4; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #717976; }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "secondary": "#486800",
+                "primary": "#01261f",
+                "error-container": "#ffdad6",
+                "secondary-fixed": "#b7f639",
+                "on-primary": "#ffffff",
+                "on-secondary-container": "#4c6c00",
+                "tertiary-container": "#31382c",
+                "surface-container": "#eceeeb",
+                "on-secondary": "#ffffff",
+                "inverse-primary": "#aacec3",
+                "primary-fixed": "#c5eadf",
+                "error": "#ba1a1a",
+                "surface-variant": "#e1e3df",
+                "secondary-fixed-dim": "#9cd912",
+                "on-tertiary-container": "#99a191",
+                "on-tertiary": "#ffffff",
+                "background": "#f8faf6",
+                "on-tertiary-fixed": "#171e13",
+                "surface-tint": "#43655c",
+                "surface-container-high": "#e7e9e5",
+                "surface-bright": "#f8faf6",
+                "tertiary-fixed-dim": "#c1c9b8",
+                "on-error-container": "#93000a",
+                "surface": "#f8faf6",
+                "tertiary": "#1c2317",
+                "outline-variant": "#c1c8c4",
+                "surface-container-low": "#f2f4f0",
+                "on-secondary-fixed-variant": "#354e00",
+                "inverse-surface": "#2e312f",
+                "on-secondary-fixed": "#131f00",
+                "on-primary-fixed": "#00201a",
+                "tertiary-fixed": "#dde5d3",
+                "secondary-container": "#b4f335",
+                "on-surface": "#191c1a",
+                "on-surface-variant": "#414846",
+                "surface-container-highest": "#e1e3df",
+                "on-error": "#ffffff",
+                "primary-fixed-dim": "#aacec3",
+                "primary-container": "#1a3c34",
+                "outline": "#717976",
+                "on-primary-fixed-variant": "#2b4d44",
+                "on-background": "#191c1a",
+                "on-primary-container": "#83a69c",
+                "surface-dim": "#d8dbd7",
+                "on-tertiary-fixed-variant": "#41493c",
+                "surface-container-lowest": "#ffffff",
+                "inverse-on-surface": "#eff1ed"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+              },
+              "spacing": {
+                "margin-tablet": "40px",
+                "gutter": "24px",
+                "container-max": "1280px",
+                "unit": "8px",
+                "margin-desktop": "80px",
+                "margin-mobile": "20px"
+              },
+              "fontFamily": {
+                "body-lg": ["Inter"],
+                "body-md": ["Inter"],
+                "headline-lg": ["Libre Caslon Text"],
+                "display-lg": ["Libre Caslon Text"],
+                "headline-xl": ["Libre Caslon Text"],
+                "label-sm": ["Inter"],
+                "code": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}],
+                "display-lg": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                "headline-xl": ["48px", {"lineHeight": "56px", "fontWeight": "400"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "code": ["14px", {"lineHeight": "1.4", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface">
+<div class="flex min-h-screen">
+<!-- SIDEBAR -->
+<aside class="fixed inset-y-0 left-0 w-64 bg-surface-container-low border-r border-outline-variant z-50 flex flex-col p-6">
+<div class="mb-12">
+<h1 class="font-display-lg text-headline-lg text-primary tracking-tight">Lumina AI</h1>
+</div>
+<nav class="flex-grow space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-secondary-container text-on-secondary-fixed font-semibold accent-glow" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container transition-all duration-300" href="#">
+<span class="material-symbols-outlined">upload_file</span>
+<span class="font-body-md">Upload Data</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container transition-all duration-300" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container transition-all duration-300" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-fixed-dim flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjrYnj8-GrpChSIeE4ksFEbRsFm_mDRFH9QxvEM4JWojuJMWdO9a2vcDBdKegYdp7-owGfKR3Eo6o5ph81LQhcA3GhYuRxenOu9dYPRUr6AIpzcb29wuulwA40IXisfKKAV-sTzdiJ6T25Rv_T2WDRkikT8t4ty7XYObeSeZArlLVuYr_jx5zJq95Rn0NxHfZHmWeMOYBRzL3Dr1nnBOV_Xrwz62FVsxmkEs8AGP_4lmA-cvgPDcYQ9-mlIme1T_To09-MGvK5Vz7C"/>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface">Divy</p>
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant font-bold">Premium Plan</p>
+</div>
+<button class="ml-auto text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined">logout</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- MAIN CONTENT AREA -->
+<main class="ml-64 flex-1 p-margin-desktop min-h-screen relative overflow-y-auto bg-surface">
+<!-- TOP HEADER -->
+<header class="flex justify-between items-center mb-10 stagger-in">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-widest">Dashboard / Overview</p>
+<h2 class="font-display-lg text-headline-xl text-primary">Welcome back, Divy</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="bg-surface-container-lowest border border-outline-variant rounded-full pl-12 pr-6 py-2 w-64 focus:border-secondary focus:ring-0 text-sm" placeholder="Search insights..." type="text"/>
+</div>
+<button class="relative w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-lowest border border-outline-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-secondary-fixed rounded-full ring-2 ring-white"></span>
+</button>
+</div>
+</header>
+<div class="grid grid-cols-12 gap-gutter">
+<!-- HERO WELCOME -->
+<section class="col-span-12 lg:col-span-8 stagger-in">
+<div class="premium-card rounded-xl p-10 h-full relative overflow-hidden flex flex-col justify-center">
+<div class="relative z-10">
+<h3 class="font-display-lg text-display-lg text-primary mb-6 leading-tight">Your AI Business Analyst is ready.</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg mb-10">
+                            Last sync was 4 hours ago. We've processed 450 new data points since your last visit.
+                        </p>
+<div class="flex gap-4">
+<button class="px-8 py-3 bg-secondary-container text-on-secondary-fixed rounded-lg font-bold hover:scale-[0.98] transition-transform flex items-center gap-2 accent-glow">
+<span class="material-symbols-outlined">upload</span>
+                                Upload CSV
+                            </button>
+<button class="px-8 py-3 border border-outline-variant hover:border-primary text-on-surface rounded-lg font-bold hover:scale-[0.98] transition-transform">
+                                View Reports
+                            </button>
+</div>
+</div>
+<!-- Decorative Element -->
+<div class="absolute top-0 right-0 w-80 h-80 bg-secondary-container/10 rounded-full blur-[100px] -mr-32 -mt-32"></div>
+</div>
+</section>
+<!-- QUICK INSIGHTS PANEL -->
+<section class="col-span-12 lg:col-span-4 stagger-in">
+<div class="premium-card rounded-xl p-8 h-full">
+<div class="flex items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h4 class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">AI Insights</h4>
+</div>
+<div class="space-y-8">
+<div class="flex items-start gap-4">
+<div class="p-2 bg-secondary-container/20 rounded-lg text-secondary">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<div>
+<p class="font-body-md font-semibold text-on-surface">Revenue up 12%</p>
+<p class="text-sm text-on-surface-variant">Compared to last month's performance.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="p-2 bg-error-container/40 rounded-lg text-error">
+<span class="material-symbols-outlined">inventory_2</span>
+</div>
+<div>
+<p class="font-body-md font-semibold text-on-surface">Inventory Alert: Stock Low</p>
+<p class="text-sm text-on-surface-variant">SKU-492 is below the safety threshold.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="p-2 bg-secondary-container/20 rounded-lg text-secondary">
+<span class="material-symbols-outlined">sentiment_satisfied</span>
+</div>
+<div>
+<p class="font-body-md font-semibold text-on-surface">Sentiment: 85% Positive</p>
+<p class="text-sm text-on-surface-variant">Recent customer feedback analysis.</p>
+</div>
+</div>
+</div>
+<button class="mt-10 w-full py-4 text-secondary font-label-sm text-label-sm border-t border-outline-variant pt-6 flex items-center justify-center gap-2 hover:gap-4 transition-all">
+                        VIEW ALL ALERTS
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- KPI GRID -->
+<section class="col-span-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter stagger-in">
+<!-- Total Reports -->
+<div class="premium-card rounded-xl p-6">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-4 uppercase tracking-widest">Total Reports</p>
+<div class="flex items-end justify-between">
+<h5 class="font-display-lg text-headline-lg text-primary">24</h5>
+<div class="text-secondary flex items-center text-xs font-bold">
+<span class="material-symbols-outlined text-sm">arrow_upward</span>
+                            +3
+                        </div>
+</div>
+<div class="mt-6 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary-fixed w-3/4"></div>
+</div>
+</div>
+<!-- Revenue Tracked -->
+<div class="premium-card rounded-xl p-6">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-4 uppercase tracking-widest">Revenue Tracked</p>
+<div class="flex items-end justify-between">
+<h5 class="font-display-lg text-headline-lg text-primary">$1.2M</h5>
+<div class="text-secondary flex items-center text-xs font-bold">
+<span class="material-symbols-outlined text-sm">arrow_upward</span>
+                            8.2%
+                        </div>
+</div>
+<div class="mt-6 flex gap-1 h-10 items-end">
+<div class="w-full bg-secondary-container/20 h-1/2 rounded-sm"></div>
+<div class="w-full bg-secondary-container/20 h-3/4 rounded-sm"></div>
+<div class="w-full bg-secondary-container h-full rounded-sm"></div>
+<div class="w-full bg-secondary-container/20 h-2/3 rounded-sm"></div>
+</div>
+</div>
+<!-- Avg. Rating -->
+<div class="premium-card rounded-xl p-6">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-4 uppercase tracking-widest">Avg. Rating</p>
+<div class="flex items-end justify-between">
+<h5 class="font-display-lg text-headline-lg text-primary">4.8</h5>
+<div class="text-on-surface-variant flex items-center text-xs">
+<span class="material-symbols-outlined text-sm text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<div class="mt-6 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary-fixed w-[96%]"></div>
+</div>
+</div>
+<!-- Products Monitored -->
+<div class="premium-card rounded-xl p-6">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-4 uppercase tracking-widest">Products Monitored</p>
+<div class="flex items-end justify-between">
+<h5 class="font-display-lg text-headline-lg text-primary">150</h5>
+<div class="text-on-surface-variant flex items-center text-[10px] font-bold uppercase tracking-widest">
+                            Active
+                        </div>
+</div>
+<div class="mt-6 flex justify-between gap-1">
+<div class="w-1/4 h-1.5 bg-secondary-fixed rounded-full"></div>
+<div class="w-1/4 h-1.5 bg-secondary-fixed rounded-full"></div>
+<div class="w-1/4 h-1.5 bg-surface-container rounded-full"></div>
+<div class="w-1/4 h-1.5 bg-surface-container rounded-full"></div>
+</div>
+</div>
+</section>
+<!-- RECENT REPORTS TABLE -->
+<section class="col-span-12 lg:col-span-8 stagger-in">
+<div class="premium-card rounded-xl overflow-hidden">
+<div class="p-8 border-b border-outline-variant flex justify-between items-center">
+<h4 class="font-headline-lg text-headline-lg text-primary">Recent Reports</h4>
+<button class="text-xs font-label-sm text-secondary hover:underline tracking-widest">VIEW ARCHIVE</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low">
+<tr>
+<th class="px-8 py-5 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Report Name</th>
+<th class="px-8 py-5 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Upload Date</th>
+<th class="px-8 py-5 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Revenue</th>
+<th class="px-8 py-5 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-6 font-code text-code text-primary group-hover:text-secondary">Q3_Sales_Final.csv</td>
+<td class="px-8 py-6 text-sm text-on-surface-variant">Oct 24, 2023</td>
+<td class="px-8 py-6 text-sm font-semibold text-on-surface">$450,230</td>
+<td class="px-8 py-6">
+<span class="px-3 py-1 bg-secondary-container/20 text-on-secondary-fixed-variant border border-secondary-container/40 rounded-full text-[10px] font-bold uppercase tracking-widest">Analyzed</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-6 font-code text-code text-primary group-hover:text-secondary">Inventory_Log_North.csv</td>
+<td class="px-8 py-6 text-sm text-on-surface-variant">Oct 22, 2023</td>
+<td class="px-8 py-6 text-sm text-on-surface-variant">--</td>
+<td class="px-8 py-6">
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant border border-outline-variant rounded-full text-[10px] font-bold uppercase tracking-widest">Processing</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-6 font-code text-code text-primary group-hover:text-secondary">Marketing_Spend_v2.xlsx</td>
+<td class="px-8 py-6 text-sm text-on-surface-variant">Oct 20, 2023</td>
+<td class="px-8 py-6 text-sm font-semibold text-on-surface">$12,000</td>
+<td class="px-8 py-6">
+<span class="px-3 py-1 bg-secondary-container/20 text-on-secondary-fixed-variant border border-secondary-container/40 rounded-full text-[10px] font-bold uppercase tracking-widest">Analyzed</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-6 font-code text-code text-primary group-hover:text-secondary">User_Feedback_RAW.csv</td>
+<td class="px-8 py-6 text-sm text-on-surface-variant">Oct 19, 2023</td>
+<td class="px-8 py-6 text-sm text-on-surface-variant">--</td>
+<td class="px-8 py-6">
+<span class="px-3 py-1 bg-secondary-container/20 text-on-secondary-fixed-variant border border-secondary-container/40 rounded-full text-[10px] font-bold uppercase tracking-widest">Analyzed</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- UPLOAD CTA -->
+<section class="col-span-12 lg:col-span-4 stagger-in">
+<div class="premium-card rounded-xl border-dashed border-2 border-outline-variant p-10 flex flex-col items-center justify-center text-center h-full group hover:border-secondary transition-colors bg-surface-container-low/30">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest border border-outline-variant flex items-center justify-center mb-6 group-hover:scale-110 group-hover:border-secondary transition-all">
+<span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-secondary">cloud_upload</span>
+</div>
+<h4 class="font-display-lg text-headline-lg text-primary mb-3">Premium CSV Upload</h4>
+<p class="font-body-md text-on-surface-variant mb-8 px-4">Drag and drop your spreadsheet files here or browse your folders for instant analysis.</p>
+<button class="px-8 py-3 bg-secondary-container text-on-secondary-fixed rounded-lg font-bold hover:shadow-lg transition-all accent-glow">
+                        Browse Files
+                    </button>
+</div>
+</section>
+</div>
+<!-- FOOTER -->
+<footer class="mt-20 flex flex-col md:flex-row justify-between items-center py-10 border-t border-outline-variant stagger-in">
+<p class="font-body-md text-on-surface-variant">© 2024 Lumina AI. Engineered for Executive Excellence.</p>
+<div class="flex gap-8 mt-6 md:mt-0">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors uppercase tracking-widest" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors uppercase tracking-widest" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors uppercase tracking-widest" href="#">Security</a>
+</div>
+</footer>
+</main>
+</div>
+<!-- Micro-interaction Scripts -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const elements = document.querySelectorAll('.stagger-in');
+        elements.forEach((el, index) => {
+            el.style.animationDelay = `${0.1 * index}s`;
+        });
+    });
+</script>
+</body></html>
