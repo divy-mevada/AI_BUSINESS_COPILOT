@@ -89,7 +89,7 @@ export function AnalysisResultsPreview({ analysis }: { analysis: AnalysisResult 
     : mockAlerts;
 
   return (
-    <section className="space-y-6">
+    <section className="space-y-6 w-full">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -97,14 +97,14 @@ export function AnalysisResultsPreview({ analysis }: { analysis: AnalysisResult 
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="flex flex-col gap-3"
       >
-        <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs tracking-[0.18em] text-[var(--landing-sage-light)] uppercase">
+        <div className="inline-flex w-fit items-center gap-2 rounded-full border border-secondary/20 bg-secondary/10 px-3 py-1 text-xs tracking-[0.18em] text-secondary uppercase font-semibold">
           <Lightbulb className="size-3.5" />
           Results preview
         </div>
-        <h2 className="font-[family-name:var(--font-playfair)] text-3xl tracking-tight text-white sm:text-4xl">
+        <h2 className="font-display text-3xl tracking-tight text-primary sm:text-4xl">
           {analysis ? "Your AI Business Analysis" : "Reusable analytics modules, ready for live data"}
         </h2>
-        <p className="max-w-2xl text-sm leading-6 text-white/60 sm:text-base">
+        <p className="max-w-2xl text-sm leading-6 text-on-surface-variant sm:text-base">
           {analysis
             ? "Live insights generated from your uploaded CSV data."
             : "These cards use mock business data now, but the structure is already prepared for KPI summaries, AI recommendations, inventory alerts, and richer chart components later."}
@@ -119,18 +119,18 @@ export function AnalysisResultsPreview({ analysis }: { analysis: AnalysisResult 
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.45, delay: index * 0.08, ease: "easeOut" }}
-            className="rounded-[28px] border border-white/10 bg-white/6 p-5 shadow-[0_20px_70px_rgba(0,0,0,0.28)] backdrop-blur-xl"
+            className="rounded-3xl border border-outline-variant bg-white p-5 shadow-sm"
           >
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="text-sm text-white/56">{label}</p>
-                <p className="mt-3 text-3xl font-semibold text-white">{value}</p>
+                <p className="text-sm font-medium text-on-surface-variant">{label}</p>
+                <p className="mt-3 text-3xl font-bold text-primary">{value}</p>
               </div>
-              <div className="flex size-11 items-center justify-center rounded-2xl bg-[var(--landing-sage)]/14 text-[var(--landing-sage-light)]">
+              <div className="flex size-11 items-center justify-center rounded-2xl bg-secondary-container text-on-secondary-container">
                 <Icon className="size-5" strokeWidth={1.6} />
               </div>
             </div>
-            <p className="mt-4 text-sm leading-6 text-white/56">{detail}</p>
+            <p className="mt-4 text-sm leading-6 text-on-surface-variant">{detail}</p>
           </motion.div>
         ))}
       </div>
@@ -143,19 +143,19 @@ export function AnalysisResultsPreview({ analysis }: { analysis: AnalysisResult 
           transition={{ duration: 0.45, ease: "easeOut" }}
           className="grid gap-4 sm:grid-cols-3"
         >
-          <div className="rounded-[28px] border border-white/10 bg-white/6 p-5 backdrop-blur-xl">
-            <p className="text-sm text-white/56">Positive Reviews</p>
-            <p className="mt-3 text-3xl font-semibold text-white">{cust.positive_reviews ?? 0}</p>
+          <div className="rounded-3xl border border-outline-variant bg-white p-5 shadow-sm">
+            <p className="text-sm font-medium text-on-surface-variant">Positive Reviews</p>
+            <p className="mt-3 text-3xl font-bold text-primary">{cust.positive_reviews ?? 0}</p>
           </div>
-          <div className="rounded-[28px] border border-white/10 bg-white/6 p-5 backdrop-blur-xl">
-            <p className="text-sm text-white/56">Negative Reviews</p>
-            <p className="mt-3 text-3xl font-semibold text-white">{cust.negative_reviews ?? 0}</p>
+          <div className="rounded-3xl border border-outline-variant bg-white p-5 shadow-sm">
+            <p className="text-sm font-medium text-on-surface-variant">Negative Reviews</p>
+            <p className="mt-3 text-3xl font-bold text-primary">{cust.negative_reviews ?? 0}</p>
           </div>
-          <div className="rounded-[28px] border border-white/10 bg-white/6 p-5 backdrop-blur-xl">
-            <p className="text-sm text-white/56">Overall Sentiment</p>
-            <p className="mt-3 text-3xl font-semibold text-white">{cust.overall_sentiment ?? 0}</p>
+          <div className="rounded-3xl border border-outline-variant bg-white p-5 shadow-sm">
+            <p className="text-sm font-medium text-on-surface-variant">Overall Sentiment</p>
+            <p className="mt-3 text-3xl font-bold text-primary">{cust.overall_sentiment ?? 0}</p>
             {cust.top_positive_keywords && cust.top_positive_keywords.length > 0 && (
-              <p className="mt-2 text-xs text-white/42">{cust.top_positive_keywords.join(", ")}</p>
+              <p className="mt-2 text-xs text-on-surface-variant">{cust.top_positive_keywords.join(", ")}</p>
             )}
           </div>
         </motion.div>
@@ -167,42 +167,42 @@ export function AnalysisResultsPreview({ analysis }: { analysis: AnalysisResult 
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="rounded-[30px] border border-white/10 bg-white/6 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.32)] backdrop-blur-xl"
+          className="rounded-3xl border border-outline-variant bg-white p-6 shadow-sm"
         >
           <div className="flex items-center justify-between gap-3">
             <div>
-              <h3 className="text-xl font-semibold text-white">
+              <h3 className="text-xl font-semibold text-primary font-display">
                 Chart placeholders
               </h3>
-              <p className="mt-1 text-sm text-white/54">
+              <p className="mt-1 text-sm text-on-surface-variant">
                 Revenue trend, category split, and demand signals.
               </p>
             </div>
-            <div className="rounded-full border border-white/10 px-3 py-1 text-xs tracking-[0.18em] text-white/42 uppercase">
+            <div className="rounded-full border border-outline-variant bg-surface px-3 py-1 text-xs tracking-[0.18em] text-on-surface-variant uppercase font-semibold">
               Mock data
             </div>
           </div>
 
           <div className="mt-6 grid gap-4 md:grid-cols-[1.2fr_0.8fr]">
-            <div className="rounded-[24px] border border-white/8 bg-black/18 p-4">
+            <div className="rounded-2xl border border-outline-variant bg-surface p-4">
               <div className="flex h-56 items-end gap-3">
                 {[36, 48, 44, 68, 74, 88, 82, 96].map((height) => (
                   <div
                     key={height}
-                    className="flex-1 rounded-t-2xl bg-[linear-gradient(180deg,rgba(220,229,208,0.95),rgba(61,79,53,0.85))]"
+                    className="flex-1 rounded-t-lg bg-gradient-to-t from-primary/80 to-primary/60"
                     style={{ height: `${height}%` }}
                   />
                 ))}
               </div>
             </div>
 
-            <div className="rounded-[24px] border border-white/8 bg-black/18 p-4">
-              <div className="relative mx-auto mt-2 size-44 rounded-full border border-white/10 bg-[radial-gradient(circle_at_center,rgba(200,212,184,0.22),transparent_48%),conic-gradient(from_40deg,rgba(220,229,208,0.95)_0_35%,rgba(61,79,53,0.9)_35%_68%,rgba(245,240,232,0.55)_68%_100%)]">
-                <div className="absolute inset-5 rounded-full bg-[#0b100d]" />
+            <div className="rounded-2xl border border-outline-variant bg-surface p-4 flex flex-col items-center justify-center">
+              <div className="relative mx-auto mt-2 size-44 rounded-full border-4 border-surface bg-conic-gradient" style={{ background: "conic-gradient(#01261f 0% 68%, #c5eadf 68% 100%)" }}>
+                <div className="absolute inset-5 rounded-full bg-surface" />
                 <div className="absolute inset-0 flex items-center justify-center text-center">
                   <div>
-                    <p className="text-2xl font-semibold text-white">68%</p>
-                    <p className="text-xs tracking-[0.18em] text-white/42 uppercase">
+                    <p className="text-2xl font-bold text-primary">68%</p>
+                    <p className="text-xs tracking-[0.18em] text-on-surface-variant uppercase font-semibold">
                       Top category
                     </p>
                   </div>
@@ -218,15 +218,15 @@ export function AnalysisResultsPreview({ analysis }: { analysis: AnalysisResult 
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.45, delay: 0.05, ease: "easeOut" }}
-            className="rounded-[30px] border border-white/10 bg-white/6 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.32)] backdrop-blur-xl"
+            className="rounded-3xl border border-outline-variant bg-white p-6 shadow-sm"
           >
-            <h3 className="text-xl font-semibold text-white">
+            <h3 className="text-xl font-semibold text-primary font-display">
               Recommendation cards
             </h3>
             <div className="mt-5 space-y-4">
               {analysis ? (
-                <div className="rounded-[22px] border border-white/10 bg-black/18 p-4">
-                  <pre className="whitespace-pre-wrap text-sm leading-6 text-white/72 font-sans">
+                <div className="rounded-2xl border border-outline-variant bg-surface p-4">
+                  <pre className="whitespace-pre-wrap text-sm leading-6 text-on-surface-variant font-body">
                     {analysis.recommendations}
                   </pre>
                 </div>
@@ -234,10 +234,10 @@ export function AnalysisResultsPreview({ analysis }: { analysis: AnalysisResult 
                 mockRecommendations.map((item) => (
                   <div
                     key={item.title}
-                    className="rounded-[22px] border border-white/10 bg-black/18 p-4"
+                    className="rounded-2xl border border-outline-variant bg-surface p-4"
                   >
-                    <p className="font-medium text-white">{item.title}</p>
-                    <p className="mt-2 text-sm leading-6 text-white/56">
+                    <p className="font-semibold text-primary">{item.title}</p>
+                    <p className="mt-2 text-sm leading-6 text-on-surface-variant">
                       {item.body}
                     </p>
                   </div>
@@ -251,13 +251,13 @@ export function AnalysisResultsPreview({ analysis }: { analysis: AnalysisResult 
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.45, delay: 0.12, ease: "easeOut" }}
-            className="rounded-[30px] border border-white/10 bg-white/6 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.32)] backdrop-blur-xl"
+            className="rounded-3xl border border-outline-variant bg-white p-6 shadow-sm"
           >
             <div className="flex items-center gap-3">
-              <div className="flex size-10 items-center justify-center rounded-2xl bg-[#f2c06b]/14 text-[#ffd89a]">
+              <div className="flex size-10 items-center justify-center rounded-xl bg-orange-100 text-orange-600">
                 <AlertTriangle className="size-5" strokeWidth={1.6} />
               </div>
-              <h3 className="text-xl font-semibold text-white">
+              <h3 className="text-xl font-semibold text-primary font-display">
                 Inventory alerts
               </h3>
             </div>
@@ -265,12 +265,12 @@ export function AnalysisResultsPreview({ analysis }: { analysis: AnalysisResult 
               {alerts.length > 0 ? alerts.map((alert) => (
                 <div
                   key={alert}
-                  className="rounded-[22px] border border-white/10 bg-black/18 px-4 py-3 text-sm leading-6 text-white/62"
+                  className="rounded-2xl border border-orange-200 bg-orange-50 px-4 py-3 text-sm leading-6 text-orange-800 font-medium"
                 >
                   {alert}
                 </div>
               )) : (
-                <p className="text-sm text-white/42">No low stock alerts.</p>
+                <p className="text-sm text-on-surface-variant">No low stock alerts.</p>
               )}
             </div>
           </motion.div>

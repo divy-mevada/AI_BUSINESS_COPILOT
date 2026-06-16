@@ -3,17 +3,28 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function LoginPage() {
   const router = useRouter();
+  const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Signing in with:", { email, password });
-    // Authentication flow logic can be integrated here
-    router.push("/upload");
+    setError("");
+    setLoading(true);
+    try {
+      await login({ email, password });
+      router.push("/upload");
+    } catch (err: any) {
+      setError(err.response?.data?.detail || "Login failed. Please check your credentials.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -42,6 +53,11 @@ export default function LoginPage() {
 
         {/* Auth Form */}
         <form className="space-y-6" onSubmit={handleSubmit}>
+          {error && (
+            <div className="text-[#BA1A1A] text-[14px] leading-[20px] text-center bg-[#FFDAD6] p-3 rounded-lg">
+              {error}
+            </div>
+          )}
           
           {/* Email input field */}
           <div className="space-y-2">
@@ -91,10 +107,11 @@ export default function LoginPage() {
 
           {/* Submit Button */}
           <button
-            className="w-full bg-primary text-on-primary py-4 rounded-lg font-semibold hover:opacity-90 active:scale-[0.98] transition-all cursor-pointer"
+            className="w-full bg-primary text-on-primary py-4 rounded-lg font-semibold hover:opacity-90 active:scale-[0.98] transition-all cursor-pointer disabled:opacity-50"
             type="submit"
+            disabled={loading}
           >
-            Sign In
+            {loading ? "Signing In..." : "Sign In"}
           </button>
         </form>
 

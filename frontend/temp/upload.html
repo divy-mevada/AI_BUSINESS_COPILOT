@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lumina AI - Upload Your Business Data</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Libre+Caslon+Text:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-surface-variant": "#414846",
+                      "secondary-container": "#b4f335",
+                      "primary-fixed": "#c5eadf",
+                      "surface-container-highest": "#e1e3df",
+                      "secondary-fixed": "#b7f639",
+                      "on-secondary-container": "#4c6c00",
+                      "on-surface": "#191c1a",
+                      "surface-dim": "#d8dbd7",
+                      "outline-variant": "#c1c8c4",
+                      "background": "#f8faf6",
+                      "tertiary": "#1c2317",
+                      "primary-fixed-dim": "#aacec3",
+                      "primary-container": "#1a3c34",
+                      "tertiary-container": "#31382c",
+                      "on-primary-container": "#83a69c",
+                      "surface-tint": "#43655c",
+                      "on-secondary-fixed": "#131f00",
+                      "on-secondary-fixed-variant": "#354e00",
+                      "on-error-container": "#93000a",
+                      "primary": "#01261f",
+                      "secondary": "#486800",
+                      "on-tertiary-fixed": "#171e13",
+                      "surface-container-high": "#e7e9e5",
+                      "on-tertiary-container": "#99a191",
+                      "surface-variant": "#e1e3df",
+                      "on-primary-fixed-variant": "#2b4d44",
+                      "on-background": "#191c1a",
+                      "on-error": "#ffffff",
+                      "inverse-primary": "#aacec3",
+                      "on-tertiary-fixed-variant": "#41493c",
+                      "outline": "#717976",
+                      "on-primary": "#ffffff",
+                      "tertiary-fixed": "#dde5d3",
+                      "surface-container-low": "#f2f4f0",
+                      "surface": "#f8faf6",
+                      "inverse-surface": "#2e312f",
+                      "on-secondary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-bright": "#f8faf6",
+                      "inverse-on-surface": "#eff1ed",
+                      "on-primary-fixed": "#00201a",
+                      "error": "#ba1a1a",
+                      "error-container": "#ffdad6",
+                      "on-tertiary": "#ffffff",
+                      "secondary-fixed-dim": "#9cd912",
+                      "surface-container": "#eceeeb"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "margin-tablet": "40px",
+                      "unit": "8px",
+                      "margin-mobile": "20px",
+                      "margin-desktop": "80px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Inter"],
+                      "display-lg": ["Libre Caslon Text"],
+                      "headline-lg": ["Libre Caslon Text"],
+                      "label-sm": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-xl": ["Libre Caslon Text"],
+                      "display-lg-mobile": ["Libre Caslon Text"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "display-lg": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-xl": ["48px", {"lineHeight": "56px", "fontWeight": "400"}],
+                      "display-lg-mobile": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.01em", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .upload-zone-gradient {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(226, 234, 216, 0.4) 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .animate-progress {
+            animation: progress-slide 2s ease-in-out infinite;
+        }
+        @keyframes progress-slide {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .custom-shadow {
+            box-shadow: 0 20px 40px -20px rgba(1, 38, 31, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopNavBar Navigation Shell -->
+<header class="w-full top-0 bg-surface z-50">
+<nav class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<span class="font-headline-lg text-headline-lg text-primary">Lumina AI</span>
+<div class="hidden md:flex gap-6">
+<a class="text-on-surface-variant font-body-md hover:text-secondary transition-colors duration-200" href="#">Features</a>
+<a class="text-on-surface-variant font-body-md hover:text-secondary transition-colors duration-200" href="#">Solutions</a>
+<a class="text-on-surface-variant font-body-md hover:text-secondary transition-colors duration-200" href="#">Pricing</a>
+<a class="text-primary font-bold border-b-2 border-secondary font-body-md" href="#">Dashboard</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:block text-on-surface-variant font-body-md hover:text-secondary transition-colors px-4 py-2">Login</button>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded shadow-sm hover:opacity-90 transition-all font-label-sm uppercase tracking-wider">Get Started</button>
+</div>
+</nav>
+</header>
+<main class="flex-grow flex flex-col items-center px-margin-mobile md:px-margin-desktop py-12 md:py-20 max-w-container-max mx-auto w-full">
+<!-- Page Header -->
+<div class="text-center mb-16 max-w-2xl">
+<h1 class="font-headline-xl text-headline-xl text-primary mb-4">Upload Your Business Data</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Securely ingest your proprietary datasets. Lumina AI will harmonize your records for deep intelligence extraction.</p>
+</div>
+<!-- Central Upload Zone -->
+<div class="w-full max-w-3xl mb-24">
+<div class="upload-zone-gradient custom-shadow border-2 border-dashed border-outline-variant rounded-xl p-12 md:p-20 text-center flex flex-col items-center group hover:border-primary transition-all duration-300 cursor-pointer relative overflow-hidden" id="dropzone">
+<!-- Background visual texture -->
+<div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, #01261f 1px, transparent 0); background-size: 24px 24px;"></div>
+<div class="relative z-10">
+<div class="mb-6 w-20 h-20 bg-secondary-container rounded-full flex items-center justify-center mx-auto text-on-secondary-container transition-transform group-hover:scale-110 duration-300">
+<span class="material-symbols-outlined text-4xl" data-icon="cloud_upload">cloud_upload</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2">Drag &amp; Drop CSV Files</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Or click to browse your computer (Max file size: 500MB)</p>
+<!-- Progress Bar (Visible during simulation) -->
+<div class="hidden w-full max-w-md mx-auto mb-6" id="upload-progress">
+<div class="flex justify-between items-end mb-2">
+<span class="font-label-sm text-primary uppercase">Uploading dataset_q4_final.csv</span>
+<span class="font-label-sm text-primary">64%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-2/3 rounded-full relative overflow-hidden">
+<div class="absolute inset-0 bg-white/30 animate-progress"></div>
+</div>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-lg font-label-sm flex items-center gap-2 hover:bg-opacity-90 transition-all mx-auto">
+<span class="material-symbols-outlined" data-icon="upload_file">upload_file</span>
+                        SELECT FILE
+                    </button>
+</div>
+</div>
+</div>
+<!-- Benefits Section -->
+<section class="w-full">
+<div class="flex flex-col items-center mb-12">
+<span class="font-label-sm text-secondary uppercase tracking-widest mb-2">Capabilities</span>
+<h2 class="font-headline-lg text-headline-lg text-primary text-center">What the copilot will uncover</h2>
+</div>
+<!-- Bento Grid - 4 Benefit Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter w-full">
+<!-- Card 1 -->
+<div class="glass-card p-8 rounded-xl flex flex-col h-full hover:translate-y-[-4px] transition-transform duration-300">
+<div class="text-secondary mb-4">
+<span class="material-symbols-outlined text-3xl" data-icon="query_stats">query_stats</span>
+</div>
+<h3 class="font-headline-lg text-[24px] leading-tight text-primary mb-3">Anomaly Detection</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">Instantly spot statistical deviations and potential operational risks across your entire supply chain.</p>
+</div>
+<!-- Card 2 -->
+<div class="glass-card p-8 rounded-xl flex flex-col h-full hover:translate-y-[-4px] transition-transform duration-300">
+<div class="text-secondary mb-4">
+<span class="material-symbols-outlined text-3xl" data-icon="monitoring">monitoring</span>
+</div>
+<h3 class="font-headline-lg text-[24px] leading-tight text-primary mb-3">Predictive Trends</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">Forecast future market demands by analyzing historical performance cycles through our proprietary neural nets.</p>
+</div>
+<!-- Card 3 -->
+<div class="glass-card p-8 rounded-xl flex flex-col h-full hover:translate-y-[-4px] transition-transform duration-300">
+<div class="text-secondary mb-4">
+<span class="material-symbols-outlined text-3xl" data-icon="hub">hub</span>
+</div>
+<h3 class="font-headline-lg text-[24px] leading-tight text-primary mb-3">Silo Integration</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">Automatically map and join disparate data tables from finance, marketing, and logistics into a single source of truth.</p>
+</div>
+<!-- Card 4 -->
+<div class="glass-card p-8 rounded-xl flex flex-col h-full hover:translate-y-[-4px] transition-transform duration-300">
+<div class="text-secondary mb-4">
+<span class="material-symbols-outlined text-3xl" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<h3 class="font-headline-lg text-[24px] leading-tight text-primary mb-3">Narrative Synthesis</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">Convert raw spreadsheets into executive-ready summaries and actionable strategic recommendations.</p>
+</div>
+</div>
+</section>
+<!-- Footer Visual Hint -->
+<div class="mt-20 w-full flex flex-col md:flex-row gap-8 items-center justify-between p-8 bg-surface-container-low rounded-2xl">
+<div class="flex items-center gap-4">
+<img alt="Security Overview" class="w-16 h-16 rounded-lg object-cover" data-alt="A clean, minimalist high-tech workspace with soft daylight, featuring a high-end laptop and a focused environment. The style is professional and visionary, using the light green and primary forest green brand colors in the background decor. The mood is calm, intellectual, and high-prestige." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwn4lG52LeNzB7wxsjcc7iVq0-QGezNy5gmm6cQSGrXexerIuDm4bfg5RkTOvePaFH6KTxg5veyHdv-WKr8AXq2IxHId_FrqoKWb_DpFlMhwlPM_tKDZEmScu1rHr6LQRjjv95K5GzQd9lbSbGBhQcKg9V_Qsj6duW-0te9hQcKfZynmK_A0FrUYVw7nJJ08lNqx9pMeTE2g5_fpGjDd9iQvfV3xk-jugqeW_-_52SUBOSZruzIkyXqpfO81pcg3x9BakgT6qg7IbN"/>
+<div>
+<p class="font-label-sm text-primary uppercase">Privacy First</p>
+<p class="font-body-md text-on-surface-variant">All data is encrypted end-to-end and SOC2 Type II compliant.</p>
+</div>
+</div>
+<a class="font-label-sm text-secondary hover:underline flex items-center gap-1" href="#">
+                LEARN ABOUT OUR SECURITY
+                <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</main>
+<!-- Footer Standard Shell -->
+<footer class="w-full mt-auto bg-surface-container-low border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-12 max-w-container-max mx-auto gap-8">
+<div>
+<span class="font-headline-xl text-headline-xl text-primary block mb-2">Lumina</span>
+<p class="text-on-surface-variant font-body-md">© 2024 Lumina Intelligence. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6 md:gap-12">
+<a class="text-on-surface-variant font-body-md hover:text-primary underline transition-all" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary underline transition-all" href="#">Terms of Service</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary underline transition-all" href="#">Security</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary underline transition-all" href="#">API Documentation</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for upload simulation
+        const dropzone = document.getElementById('dropzone');
+        const progress = document.getElementById('upload-progress');
+        const uploadLabel = dropzone.querySelector('h2');
+        const uploadSub = dropzone.querySelector('p');
+        const uploadBtn = dropzone.querySelector('button');
+
+        dropzone.addEventListener('click', () => {
+            if (progress.classList.contains('hidden')) {
+                progress.classList.remove('hidden');
+                uploadLabel.textContent = "Processing Dataset...";
+                uploadSub.textContent = "Please wait while we vectorize your records.";
+                uploadBtn.classList.add('opacity-50', 'pointer-events-none');
+                
+                // Simulate completion
+                setTimeout(() => {
+                    uploadLabel.textContent = "Upload Complete";
+                    uploadSub.textContent = "Data successfully ingested and ready for analysis.";
+                    uploadBtn.innerHTML = '<span class="material-symbols-outlined">analytics</span> VIEW DASHBOARD';
+                    uploadBtn.classList.remove('opacity-50', 'pointer-events-none');
+                    uploadBtn.classList.add('bg-secondary', 'text-on-secondary-container');
+                    document.querySelector('#upload-progress .bg-secondary').style.width = '100%';
+                    document.querySelector('#upload-progress span:last-child').textContent = '100%';
+                }, 3000);
+            }
+        });
+    </script>
+</body></html>

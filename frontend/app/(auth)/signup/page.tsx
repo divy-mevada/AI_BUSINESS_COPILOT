@@ -3,17 +3,30 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function SignupPage() {
   const router = useRouter();
+  const { signup } = useAuth();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Registering with:", { email, password });
-    // Authentication signup flow logic can be integrated here
-    router.push("/upload");
+    setError("");
+    setLoading(true);
+    try {
+      await signup({ first_name: firstName, last_name: lastName, email, password });
+      router.push("/upload");
+    } catch (err: any) {
+      setError(err.response?.data?.email?.[0] || err.response?.data?.password?.[0] || "Signup failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -42,7 +55,50 @@ export default function SignupPage() {
 
         {/* Auth Form */}
         <form className="space-y-6" onSubmit={handleSubmit}>
+          {error && (
+            <div className="text-[#BA1A1A] text-[14px] leading-[20px] text-center bg-[#FFDAD6] p-3 rounded-lg">
+              {error}
+            </div>
+          )}
           
+          {/* Name input fields */}
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <label
+                className="text-[12px] leading-[16px] font-semibold text-on-surface-variant block uppercase tracking-wider"
+                htmlFor="firstName"
+              >
+                First Name
+              </label>
+              <input
+                className="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none text-[16px] leading-[24px]"
+                id="firstName"
+                type="text"
+                placeholder="John"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <label
+                className="text-[12px] leading-[16px] font-semibold text-on-surface-variant block uppercase tracking-wider"
+                htmlFor="lastName"
+              >
+                Last Name
+              </label>
+              <input
+                className="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none text-[16px] leading-[24px]"
+                id="lastName"
+                type="text"
+                placeholder="Doe"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                required
+              />
+            </div>
+          </div>
+
           {/* Email input field */}
           <div className="space-y-2">
             <label
@@ -83,10 +139,11 @@ export default function SignupPage() {
 
           {/* Submit Button */}
           <button
-            className="w-full bg-primary text-on-primary py-4 rounded-lg font-semibold hover:opacity-90 active:scale-[0.98] transition-all cursor-pointer"
+            className="w-full bg-primary text-on-primary py-4 rounded-lg font-semibold hover:opacity-90 active:scale-[0.98] transition-all cursor-pointer disabled:opacity-50"
             type="submit"
+            disabled={loading}
           >
-            Create Account
+            {loading ? "Creating Account..." : "Create Account"}
           </button>
         </form>
 

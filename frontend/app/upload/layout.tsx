@@ -1,8 +1,10 @@
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Libre_Caslon_Text } from "next/font/google";
+import "../landing/landing.css";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const libreCaslon = Libre_Caslon_Text({
+  variable: "--font-libre-caslon",
   subsets: ["latin"],
+  weight: ["400", "700"],
   display: "swap",
 });
 
@@ -19,8 +21,12 @@ export default function UploadLayout({
 }) {
   return (
     <div
-      className={`${playfair.variable} ${inter.variable} landing-page min-h-screen bg-[#070a08] font-[family-name:var(--font-inter)] text-white`}
+      className={`${libreCaslon.variable} ${inter.variable} min-h-screen flex flex-col font-[family-name:var(--font-inter)] bg-surface text-on-surface`}
     >
+      <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet"
+      />
       {children}
     </div>
   );
